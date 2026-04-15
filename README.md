@@ -24,4 +24,8 @@ The goal of this project is to demonstrate frontend development skills by buildi
    ```bash
    git clone https://github.com/khushikhobar25/aligntech.git
 ## Screenshot
-![Website Screenshot](ss .png)
+### Home Page
+![Home](screenshot1.png)
+
+### Services Section
+![Services](screenshot2.png)
