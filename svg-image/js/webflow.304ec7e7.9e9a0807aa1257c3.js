@@ -24440,3 +24440,43 @@
     n(1724),
     n(4843);
 })();
+const btn = document.getElementById("chat-btn");
+const box = document.getElementById("chat-box");
+const input = document.getElementById("user-input");
+const messages = document.getElementById("messages");
+
+btn.onclick = () => box.classList.toggle("hidden");
+
+input.addEventListener("keypress", async (e) => {
+  if (e.key === "Enter") {
+    const userText = input.value;
+    messages.innerHTML += `<div>You: ${userText}</div>`;
+    input.value = "";
+
+    const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Authorization": "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",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        model: "openai/gpt-3.5-turbo",
+        messages: [
+          {
+            role: "system",
+            content: "You are an assistant for AlignTech. Answer questions about services like web development, design, and tech solutions."
+          },
+          {
+            role: "user",
+            content: userText
+          }
+        ]
+      })
+    });
+
+    const data = await res.json();
+    const reply = data.choices[0].message.content;
+
+    messages.innerHTML += `<div>Bot: ${reply}</div>`;
+  }
+});
