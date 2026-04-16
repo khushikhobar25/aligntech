@@ -6822,6 +6822,16 @@ figcaption {
   border: 1px solid #ccc;
   padding: 10px;
 }
+#user-input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: none;
+  outline: none;
+
+  background: white;   
+  color: black;        
+}
 
 .hidden {
   display: none;
